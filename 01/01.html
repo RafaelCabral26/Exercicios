@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h3>1) Escreva um programa para ler o raio de um círculo, calcular e escrever a sua área (Pi * (raio * raio)) </h3>
+        
+        <label>Qual o Raio?</label>
+        <input type="number" id="raio" value="0">
+        <button onclick="calculoRaio()">Ok</button>
+        <div id="texto"></div>
+    </section>
+</body>
+<script>
+function calculoRaio() {
+    var raio = document.getElementById("raio").value;
+    var resposta = 3.14 * (raio * raio);
+    document.getElementById("texto").innerHTML = "Resposta:" + resposta
+}
+
+
+</script>
+</html>
