@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <section>
+        <h2>3) Escreva um programa para ler uma temperatura em graus Celsius, calcular e escrever o valor correspondente em graus Fahrenheit.  (F = (C * 9/5) + 32)</h2>
+
+        <label>Celsius para Fahrenheit</label>
+        <input type="text" id="celsius" value="0">
+        <button onclick="converterFah()">Converter</button>
+
+        <div id="fah"></div>
+
+    </section>
+</body>
+<script>
+    function converterFah() {
+        var celsius = document.getElementById("celsius").value;
+        var fahrenheit = Math.round((celsius * 9/5) + 32);
+
+        document.getElementById("fah").innerHTML = "Fahrenheit:" + fahrenheit;
+    }
+
+
+</script>
+</html>
