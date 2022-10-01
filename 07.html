@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+            
+        }
+    </style>
+
+</head>
+<body>
+    <section>
+        <h3>7) A equipe Benneton-Ford deseja calcular o número mínimo de litros que deverá colocar no tanque de seu carro para que ele possa percorrer um determinado número de voltas até o primeiro reabastecimento. Escreva um programa que leia 
+            o comprimento da pista (em metros), 
+            o número total de voltas a serem percorridas no grande prêmio,
+             o número de abastecimentos desejados e 
+             o consumo de combustível do carro (em Km/L).
+              Calcular e escrever o número mínimo de litros necessários para percorrer até o primeiro reabastecimento.
+               OBS: Considere que o número de voltas entre os abastecimentos é o mesmo. 
+        </h3>
+        <label>Litros por abastecimentos:</label>
+        <p>Comprimento da Pista: <input type="text" id="comprimento" value="0">  </p>
+        <p>Número de Voltas: <input type="text" id="voltas" value="0">  </p>
+        <p>Número de Abastecimentos: <input type="text" id="abastecimentos" value="0">  </p>
+        <p>Consumo de Combustível: <input type="text" id="combustivel" value="0">  </p>
+
+        <button onclick="litrosAbastecimento()">Calcular</button>
+        
+        <div id="litrosPrimeiroAbastecimento"></div>
+
+    </section>
+
+</body>
+<script>
+    
+    function litrosAbastecimento() {
+        let pista = document.getElementById("comprimento").value;
+        let voltas = document.getElementById("voltas").value;
+        let abastecimentos = document.getElementById("abastecimentos").value;
+        let combustivel = document.getElementById("combustivel").value;
+
+        let kilometragem = pista * voltas;
+        let consumoCombustivel = kilometragem / combustivel;
+
+        let litrosAbastecimento = abastecimentos / consumoCombustivel;
+
+        document.getElementById("litrosPrimeiroAbastecimento").innerHTML = litrosAbastecimento;
+
+    }
+</script>
+</html>
