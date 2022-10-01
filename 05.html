@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h4>5) Escreva um programa para ler as dimensões de uma cozinha retangular (comprimento, largura e altura), calcular e escrever a quantidade de caixas de azulejos para se colocar em todas as suas paredes (considere que não será descontada a área ocupada por portas e janelas). Cada caixa de azulejos possui 1,5 m2. </h6>
+        <label> Calculo quantidade de azulejos:</label>
+        <input type="text" id="comprimento" value="0">
+        <input type="text" id="largura" value="0">
+        <input type="text" id="altura" value="0">
+        <button onclick="calculoAzulejos()">Calcular</button>
+
+        <div id="azulejos"></div>
+    </section>
+</body>
+<script>
+    function calculoAzulejos() {
+        
+        let comprimento = document.getElementById("comprimento").value;
+        let largura = document.getElementById("largura").value;
+        let altura = document.getElementById("altura").value;
+        
+
+        if (comprimento == largura) {
+            alert("O comôdo não é retângular.")
+        }else if(comprimento !== largura) {
+            let metrosParedes = ((comprimento + largura) * 2) * altura;
+            let quantidadeAzulejos = metrosParedes / 1.5;
+            document.getElementById("azulejos").innerHTML = "Você vai precisar de " + Math.round(quantidadeAzulejos) + " caixas de azulejo.";
+            
+            
+        }
+    }
+
+</script>
+</html>
