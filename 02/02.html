@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+       <h3>2) Escreva um programa para ler uma temperatura em graus Fahrenheit, calcular e escrever o valor correspondente em graus Celsius. (C = (F-32) * 5 / 9) </h3>
+    <label>Fahrenheit para Celsius</label>
+    <input type="text" id="fah" value="0">
+    <button onclick="calculaTemp()">Calcular:</button>
+    <div id="celsius"></div>
+    </section>
+</body>
+<script>
+    function calculaTemp() {
+        let fahrenheit = document.getElementById("fah").value;
+        let celsius = Math.round((fahrenheit - 32) * 5 / 9);
+
+        document.getElementById("celsius").innerHTML = "Celsius:" + celsius;
+
+    }
+
+
+</script>
+</html>
