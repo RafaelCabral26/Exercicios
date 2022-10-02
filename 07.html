@@ -46,14 +46,14 @@
         let pista = document.getElementById("comprimento").value;
         let voltas = document.getElementById("voltas").value;
         let abastecimentos = document.getElementById("abastecimentos").value;
-        let combustivel = document.getElementById("combustivel").value;
+        let ConsumoCombustivel = document.getElementById("combustivel").value;
 
         let kilometragem = pista * voltas;
-        let consumoCombustivel = kilometragem / combustivel;
+        let litrosPorAbastecimento = ConsumoCombustivel * abastecimentos;
+        let primeiroAbastecimento = kilometragem / litrosPorAbastecimento;
+        
 
-        let litrosAbastecimento = abastecimentos / consumoCombustivel;
-
-        document.getElementById("litrosPrimeiroAbastecimento").innerHTML = litrosAbastecimento;
+        document.getElementById("litrosPrimeiroAbastecimento").innerHTML = "Consumimos " + primeiroAbastecimento + "Ls de gasolina até o primeiro abastecimento.";
 
     }
 </script>
