@@ -20,8 +20,15 @@
 
         
         <label>Lâmpadas necessárias para iluminar quarto:</label>
-        <input type="text" id="largura" value="0" required>
-        <input type="text" id="comprimento" value="0" required>
+        <label for="largura">Qual a largura do comodo?</label>
+        <input type="text" name="largura" id="largura" value="0" required>
+       
+        <label for="comprimento">Qual o comprimento do comodo?</label>
+        <input type="text" name="comprimento" id="comprimento" value="0" required>
+        
+        <label for="potLampada">Qual a potência da lâmpada</label>
+        <input type="text" name="potLampada" id="potLampada" value="0" required>
+       
         <button onclick="calcularLampadas()">Calcular quantidade de lampadas</button>
     
         <div id="lampadas"></div>
@@ -31,8 +38,10 @@
     function calcularLampadas() {
         let largura = document.getElementById("largura").value;
         let comprimento = document.getElementById("comprimento").value;
+        let potenciaLampada = document.getElementById("potLampada").value;
         let metrosQuadrados = largura * comprimento;
-        let lampadas = Math.round(metrosQuadrados / 18);
+        let lampadasPorMetroQuadrado = potenciaLampada / 18;
+        let lampadas = Math.round(metrosQuadrados / lampadasPorMetroQuadrado);
 
         document.getElementById("lampadas").innerHTML = lampadas + " lampadas necessárias.";
 
