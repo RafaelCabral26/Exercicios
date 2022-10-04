@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+    </style>
 </head>
+
 <body>
-    
+    <section>
+        <label for="codigo">Inserir código do produto abaixo(1 á 11).</label>
+        <input type="text" value="0" id="codigo">
+
+        <button onclick="retornoCodigo()">Verificar código do produto.</button>
+
+        <div id="retorno"></div>
+    </section>
 </body>
+<script>
+
+    function retornoCodigo() {
+        let codigo = document.getElementById("codigo").value
+        let retorno = document.getElementById("retorno");
+        if (codigo < 1 || codigo > 11) {
+             retorno.innerHTML = "Produto Importado.";
+        } if (codigo == 11) {
+                retorno.innerHTML = "Noroeste";
+            } if (codigo == 10) {
+                    retorno.innerHTML = "Centro-Oeste";
+              } if (codigo <= 9 && codigo >= 7) {
+                        retorno.innerHTML = "Sudeste";
+                 } if (codigo <= 6 && codigo >= 5) {
+                            retorno.innerHTML = "Nordeste"
+                     }if(codigo == 4) {
+                                retorno.innerHTML = "Oeste";
+                        }if(codigo == 3) {
+                                    retorno.innerHTML = "Leste";
+                             }if(codigo == 2) {
+                                        retorno.innerHTML = "Norte";
+                                }if(codigo == 1) {
+                                            retorno.innerHTML = "Sul";
+                                }
+    }
+
+
+
+
+</script>
+
 </html>
