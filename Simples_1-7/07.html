@@ -48,9 +48,9 @@
         let abastecimentos = document.getElementById("abastecimentos").value;
         let ConsumoCombustivel = document.getElementById("combustivel").value;
 
-        let kilometragem = pista * voltas;
-        let litrosPorAbastecimento = ConsumoCombustivel * abastecimentos;
-        let primeiroAbastecimento = kilometragem / litrosPorAbastecimento;
+        let kilometragem = (pista/1000) * voltas;
+        let litrosTotais = kilometragem / ConsumoCombustivel;
+        let primeiroAbastecimento = litrosTotais / abastecimentos;
         
 
         document.getElementById("litrosPrimeiroAbastecimento").innerHTML = "Consumimos " + primeiroAbastecimento + "Ls de gasolina até o primeiro abastecimento.";

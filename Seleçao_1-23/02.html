@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+</head>
+<body>
+    <section>
+        2) Escreva um programa que leia as notas das duas avaliações normais e a nota da avaliação optativa. 
+Caso o aluno não tenha feito a optativa deve ser fornecido o valor -1. Calcular a média do semestre considerando que a prova optativa substitui a nota mais baixa entre as duas primeiras avaliações. Escrever a média e mensagens que indiquem se o aluno foi aprovado, reprovado ou está em exame, de acordo com as informações abaixo: 
+Aprovado : média >= 6.0  	Reprovado: media < 3.0 	Exame: média >= 3.0 e < 6.0 
+
+        <label for="">Notas das Avaliações</label>
+
+
+        <label for="prova1">Av1</label>
+        <input type="text" value="0" id="prova1">
+
+        <label for="prova2">Av2</label>
+        <input type="text" value="0" id="prova2">
+
+        <label for="provaopt">Av Optativa</label>
+        <input type="text" value="-1" id="provaOpt">
+
+        <button onclick="substituicaoOptativa()">Calcular Média</button>
+        <div id="media"></div>
+    </section>
+</body>
+
+<script>
+    
+
+    
+    
+    function substituicaoOptativa () {
+            let av2 = document.getElementById("prova2").value;
+            let av1 = document.getElementById("prova1").value;
+            let avOpt = document.getElementById("provaOpt").value;
+            
+            if(av1 < av2 && av1 < avOpt) {
+             av1 = avOpt;
+             
+            }else if(av2 < av1 && av2 < avOpt) {
+                av2 = avOpt;
+               
+            }
+            calcMedia(av1, av2)
+        }
+
+    function calcMedia(av1, av2) {
+        let mediaOpt = (av1 + av2) / 2;
+        return mediaOpt;
+    }
+
+</script>
+</html>
