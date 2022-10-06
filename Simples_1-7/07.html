@@ -27,12 +27,12 @@
                OBS: Considere que o número de voltas entre os abastecimentos é o mesmo. 
         </h3>
         <label>Litros por abastecimentos:</label>
-        <p>Comprimento da Pista: <input type="text" id="comprimento" value="0">  </p>
-        <p>Número de Voltas: <input type="text" id="voltas" value="0">  </p>
-        <p>Número de Abastecimentos: <input type="text" id="abastecimentos" value="0">  </p>
-        <p>Consumo de Combustível: <input type="text" id="combustivel" value="0">  </p>
+        <p>Comprimento da Pista: <input type="number" id="comprimento" value="0">  </p>
+        <p>Número de Voltas: <input type="number" id="voltas" value="0">  </p>
+        <p>Número de Abastecimentos: <input type="number" id="abastecimentos" value="0">  </p>
+        <p>Consumo de Combustível: <input type="number" id="combustivel" value="0">  </p>
 
-        <button onclick="litrosAbastecimento()">Calcular</button>
+        <button onclick="controllerLitrosAbastecimento()">Calcular</button>
         
         <div id="litrosPrimeiroAbastecimento"></div>
 
@@ -41,19 +41,27 @@
 </body>
 <script>
     //Falta tamanho do tanque do carro.
-    function litrosAbastecimento() {
-        let pista = document.getElementById("comprimento").value;
-        let voltas = document.getElementById("voltas").value;
-        let abastecimentos = document.getElementById("abastecimentos").value;
-        let ConsumoCombustivel = document.getElementById("combustivel").value;
-
-        let kilometragem = pista * voltas;
-        let litrosPorAbastecimento = ConsumoCombustivel * abastecimentos;
-        let primeiroAbastecimento = kilometragem / litrosPorAbastecimento;
+    function controllerLitrosAbastecimento() {
+        let pista = parseInt(document.getElementById("comprimento").value);
+        let voltas = parseInt(document.getElementById("voltas").value);
+        let abastecimentos = parseInt(document.getElementById("abastecimentos").value);
+        let consumoCombustivel = parseFloat(document.getElementById("combustivel").value);
         
+        var x = calculoLitros(pista,voltas,abastecimentos,consumoCombustivel);
 
-        document.getElementById("litrosPrimeiroAbastecimento").innerHTML = "Consumimos " + primeiroAbastecimento + "Ls de gasolina até o primeiro abastecimento.";
-
+        saidaDados(x);
+        
+    }
+    
+    function calculoLitros (pista, voltas, abastecimentos, consumoCombustivel) {
+        let kilometragem = (pista / 1000) * voltas;
+        let litrosTotais = kilometragem / consumoCombustivel;
+        let primeiroAbastecimento = litrosTotais / abastecimentos;
+        return primeiroAbastecimento
+    }
+    function saidaDados(texto) {
+        document.getElementById("litrosPrimeiroAbastecimento").innerHTML = "Consumimos " + texto + "Ls de gasolina até o primeiro abastecimento.";
+        
     }
 </script>
 </html>
