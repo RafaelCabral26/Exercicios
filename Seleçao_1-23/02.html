@@ -7,7 +7,7 @@
     <title>Document</title>
 
     <style> 
-        section {
+        form {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -16,29 +16,67 @@
     </style>
 </head>
 <body>
+    <h1>2) Escreva um programa que leia as notas das duas avaliações normais e a nota da avaliação optativa. 
+        Caso o aluno não tenha feito a optativa deve ser fornecido o valor -1. Calcular a média do semestre considerando que a prova optativa substitui a nota mais baixa entre as duas primeiras avaliações. Escrever a média e mensagens que indiquem se o aluno foi aprovado, reprovado ou está em exame, de acordo com as informações abaixo: 
+        Aprovado : média >= 6.0  	Reprovado: media  3.0 	Exame: média >= 3.0 e  6.0 </h1>
     <section>   
-        <h1>2) Escreva um programa que leia as notas das duas avaliações normais e a nota da avaliação optativa. 
-            Caso o aluno não tenha feito a optativa deve ser fornecido o valor -1. Calcular a média do semestre considerando que a prova optativa substitui a nota mais baixa entre as duas primeiras avaliações. Escrever a média e mensagens que indiquem se o aluno foi aprovado, reprovado ou está em exame, de acordo com as informações abaixo: 
-            Aprovado : média >= 6.0  	Reprovado: media  3.0 	Exame: média >= 3.0 e  6.0 </h1>
 
-
+        <form action="" id="myForm">
             <label>Notas das avaliações.</label>
             <label for="nota1">Av1</label>
-            <input type="text" id="nota1" value="0">
+            <input type="number" id="nota1"  min="0" max="10" value="0">
             
             <label for="nota2">Av2</label>
-            <input type="text" id="nota2" value="0"> <label for="nota1">Av1</label>
+            <input type="number" id="nota2"  min="0" max="10" value="0">
            
             <label for="notaopt">Av Optativa</label>
-            <input type="text" id="notaopt" value="-1">
-
+            <input type="number" id="notaOpt" min="0" max="10" value="-1">
+            
+            <input type="submit" value="Calcular" onclick="controllerNotas()" >
 
             <div id="media"> </div>
+        </form>    
     </section>
 </body>
     <script>
+function controllerNotas () {
+    let nota1 = parseInt(document.getElementById("nota1").value);
+    let nota2 = parseInt(document.getElementById("nota2").value);
+    let notaOpt = parseInt(document.getElementById("notaOpt").value);
+    let media = mediaNotas(nota1, nota2, notaOpt);
+   
 
+    let resultado = checkAprova(media);
 
+    saidaDados(resultado, media);
+}
+function mediaNotas (n1, n2, nOpt) {
+    if(n1 > nOpt && n2 > nOpt) {
+        return (n1 + n2) / 2;
+    }else if(n1 < n2 && n1 < nOpt){
+        return (nOpt + n2) / 2
+    }else if(n2 < n1 && n2 < nOpt){
+        return (nOpt + n1) / 2;
+    }
+}
 
+function checkAprova(m) {
+    if(m >= 6) {
+        return "Aprovado!"
+    }else if(m >= 3 && m < 6){
+        return "em Prova Final."
+    }else {
+        return "Reprovado."
+    }
+}
+function saidaDados(texto, media) {
+    if(media < 0 || media > 10){
+        return
+    }else
+    document.getElementById("media").innerHTML = "Voce está " + texto;
+}
+var form = document.getElementById("myForm");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
     </script>
 </html>
