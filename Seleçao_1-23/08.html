@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    section {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items: center;
+    }
+</style>
+
+</head>
+<body>
+    <section>
+        
+            <label for="">Insira o ano do seu nascimento para verificar se pode votar.</label>
+            <input type="number" value="0" id="anoNascimento" scale="1" min="1" max="3000">
+            
+            <button onclick="controllerResposta()">Verificar</button>
+
+            <div id="resposta"></div>
+    </section>
+</body>
+<script>
+function controllerResposta() {
+    let anoNascimento = document.getElementById("anoNascimento").value;
+    let anoAtual = pegarData();
+
+    let verifica = calcIdade(anoNascimento, anoAtual);
+
+    saidaDados(verifica);
+
+}
+function pegarData() {
+    let data = new Date();
+    let anoAtual = data.getFullYear();
+    return anoAtual;
+}
+function calcIdade(ano, anoAgora) {
+let x = anoAgora - ano;
+    if(x < 18) {
+        return "Vc não pode votar!"
+    }else {
+        return "Vc pode votar!"
+    }
+}
+function saidaDados(r) {
+document.getElementById("resposta").innerHTML = r;
+}
+</script>
+</html>
