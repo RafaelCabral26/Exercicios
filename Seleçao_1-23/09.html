@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>   
+        <h4>9) As maçãs custam R$ 0,30 cada se forem compradas menos do que uma dúzia, e R$ 0,25 se forem compradas pelo menos doze. Escreva um programa que leia o número de maçãs compradas, calcule e escreva o valor total da compra.
+            </h4>
+            <label for="">Digite abaixo quantas maças vão ser compradas:</label>
+            <input type="number" value="0" id="numMacas">
+
+            <button onclick="controllerPrice()">Calcular Valor</button>
+
+            <div id="resposta"></div>
+
+    </section>
+
+
+
+</body>
+<script>
+    function controllerPrice() {
+        let numeroMacas = document.getElementById("numMacas").value;
+        let valor = calcPrice(numeroMacas);
+
+        saidaDados(valor);
+    }
+    function calcPrice(x) {
+        if(x < 12) {
+            return x * 0.25
+        }else {
+            return x * 0.30
+        }
+    }
+    function saidaDados(z) {
+        document.getElementById("resposta").innerHTML = "O Valor a ser pago é " + z;
+    }
+</script>
+</html>

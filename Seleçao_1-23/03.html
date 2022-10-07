@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>3) Escreva um programa para ler as notas das duas avaliações de um aluno no semestre, calcular e 
+        escrever a média semestral e a seguinte mensagem: PARABÉNS! Você foi aprovado! somente se o aluno foi aprovado (considere 6.0 a média mínima para aprovação). 
+        </h3>
+       <section>
+        <label for="">Insira suas notas abaixo.</label>
+            <input type="number" value="0" id="nota1">
+            <input type="number" value="0" id="nota2">
+
+            <button onclick="controllerMedia()">Calcular Aprovação</button>
+
+            <div id="resposta"></div>
+        </section>
+</body>
+<script>
+function controllerMedia() {
+    let n1 = parseInt(document.getElementById("nota1").value);
+    let n2 = parseInt(document.getElementById("nota2").value);
+    let m = calcMedia(n1, n2);
+    saidaDados(m);
+}
+function calcMedia(n1, n2) {
+    let media = (n1 + n2) / 2;
+    if(media >=6) {
+        return "Parabéns! Você foi aprovado!";
+    }else {
+        return " ";
+    }
+}
+function saidaDados(x) {
+    document.getElementById("resposta").innerHTML = x;
+}
+</script>
+</html>
