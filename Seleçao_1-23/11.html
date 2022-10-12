@@ -7,10 +7,10 @@
     <title>Document</title>
     <style>
         section {
-            display: flex;
+            display:flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -21,29 +21,27 @@
             ACESSO PERMITIDO caso a senha seja válida. 
             ACESSO NEGADO caso a senha seja inválida. 
             </h4>
-            
-            <label for="">Bote sua senha abaixo:</label>
-            <input type="number" value="0" id="senha">
-            <button onclick="controllerSenha()">Verificar</button>
+            <label for="senha">Verifique Senha:</label>
+            <input type="number" id="senha" value="0">
+            <button onclick="controllerVerificar()">Verificar...</button>
             <div id="resposta"></div>
-            
     </section>
 </body>
 <script>
-    function controllerSenha() {
-       let senha = document.getElementById("senha") .value;
-        let r = verificarSenha(senha);
+    function controllerVerificar() {
+        let senha =  document.getElementById("senha").value;
+        let r = verificarSenha(senha)
         saidaDados(r);
     }
-    function verificarSenha(x) {
-        if(x == 1234) {
+    function verificarSenha(s) {
+        if(s == 1234) {
             return "ACESSO PERMITIDO"
         }else {
             return "ACESSO NEGADO"
         }
     }
-    function saidaDados(r) {
-        document.getElementById("resposta").innerHTML = r;
+    function saidaDados(x) {
+        document.getElementById("resposta").innerHTML = x;
     }
 </script>
 </html>
