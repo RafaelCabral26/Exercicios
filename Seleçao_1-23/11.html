@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <section>   
+        <h4>11) Escreva um programa que verifique a validade de uma senha fornecida pelo usuário. A senha 
+            válida é o número 1234. Devem ser impressas as seguintes mensagens: 
+            ACESSO PERMITIDO caso a senha seja válida. 
+            ACESSO NEGADO caso a senha seja inválida. 
+            </h4>
+            
+            <label for="">Bote sua senha abaixo:</label>
+            <input type="number" value="0" id="senha">
+            <button onclick="controllerSenha()">Verificar</button>
+            <div id="resposta"></div>
+            
+    </section>
+</body>
+<script>
+    function controllerSenha() {
+       let senha = document.getElementById("senha") .value;
+        let r = verificarSenha(senha);
+        saidaDados(r);
+    }
+    function verificarSenha(x) {
+        if(x == 1234) {
+            return "ACESSO PERMITIDO"
+        }else {
+            return "ACESSO NEGADO"
+        }
+    }
+    function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+</script>
+</html>
