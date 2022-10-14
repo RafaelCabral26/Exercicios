@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <h4>14) Escreva um programa para ler o número de gols marcados pelo Grêmio e o número de gols 
+        marcados pelo Inter em um GRENAL. Escrever o nome do vencedor. Caso não haja vencedor deverá ser impressa a palavra EMPATE.
+        </h4>
+    <label for="">Escreva o Placar do Jogo abaixo</label>
+    <label for="gremio">Gols do Grêmio:</label>
+    <input type="number" value="0" id="gremio">
+    <label for="inter">Gols do Inter:</label>
+    <input type="number" value="0" id="inter">
+    <button onclick="controllerVencedor()">Checar Vencedor</button>
+    <div id=resposta></div>
+</section>
+</body>
+<script>
+    function controllerVencedor() {
+        let gremio = parseInt(document.getElementById("gremio").value);
+        let inter = parseInt(document.getElementById("inter").value);
+        let r = checarVencedor(gremio, inter);
+        saidaDados(r);
+    }
+    function checarVencedor(g, i) {
+        if(g == i) {
+            return "EMPATE!"
+        }else if(g > i) {
+            return "Grêmio Venceu!"
+        }else {
+            return "Inter Venceu!"
+        }
+    }
+    function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+</script>
+</html>

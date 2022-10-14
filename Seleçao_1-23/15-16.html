@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <h4>15) Escreva um programa para ler o número de lados de um polígono regular e a medida do lado (em 
+        cm). Calcular e imprimir o seguinte: 
+        - Se o número de lados for igual a 3 escrever TRIANGULO e o valor do seu perímetro. 
+        - Se o número de lados for igual a 4 escrever QUADRADO e o valor da sua área. 
+        - Se o número de lados for igual a 5 escrever PENTÁGONO. 
+        Observação: Considere que o usuário só informará os valores 3, 4 ou 5. 
+        </h4>
+        <label for="">Insira os lados e a medida do polígono:</label>
+        <label for="lados">Lados:</label>
+        <input type="number" value="0" id="lados">
+        <label for="medidaLado">Medida do Lado:</label>
+        <input type="number" value="0" id="medidaLado">
+        <button onclick="controllerPoligono()">Calcular</button>
+        <div id=resposta></div>
+    </section>
+</body>
+<script>
+     function controllerPoligono() {
+        let lados = parseFloat(document.getElementById("lados").value);
+        let medida = parseFloat(document.getElementById("medidaLado").value);
+        let r = calcPoligono(lados, medida);
+        saidaDados(r);
+    }
+     function calcPoligono(l,m) {
+        if (l == 3) {
+            return "Esse polígono é um Triângulo e seu perímetro é " + m*3;
+        }else if (l == 4) {
+            return "Esse polígono é um Quadrado e sua área é " + m * m;
+        }else if (l == 5) {
+            return "Esse polígono é um Pentágono"
+        }else if (l < 3) {
+            return "Não é um polígono."
+        }else {
+            return "Polígono não identificado!"
+        }
+     }
+     
+     
+     function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+</script>
+</html>
