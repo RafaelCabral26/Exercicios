@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
         section {
             display: flex;
@@ -16,27 +17,53 @@
 </head>
 <body>
     <section>
-        <label for="">Insira os valore abaixo:</label>
+        <h4>10) Escreva um programa para ler 3 valores inteiros (considere que não serão lidos valores iguais) e 
+            escrevê-los em ordem crescente.
+            </h4>
+            <label for="">Escreva 3 valores abaixo para ordená-los de forma crescente:</label>
+            <input type="number" value="0" id="valor1">
+            <input type="number" value="0" id="valor2">
+            <input type="number" value="0" id="valor3">
 
-        <input type="number" value="0" id="num1">
-        <input type="number" value="0" id="num2">
-        <input type="number" value="0" id="num3">
+            <button onclick="controllerCrescente()">Botar em ordem crescente.<
+                 /button>
 
-        <button onclick="controllerOrdem()">Botar em Ordem Crescente.</button>
+            <div id="resposta"></div>
 
-        <div id="resposta"></div>
-</section>
+    </section>
+
 </body>
 <script>
-    function controllerOrdem() {
-        let num1 = parseInt(document.getElementById("num1").value);
-        let num2 = parseInt(document.getElementById("num2").value);
-        let num3 = parseInt(document.getElementById("num3").value);
-
-
+    function controllerCrescente() {
+        let valor1 = parseFloat(document.getElementById("valor1").value);
+        let valor2 = parseFloat(document.getElementById("valor2").value);
+        let valor3 = parseFloat(document.getElementById("valor3").value);
+        let r = calcCrescente(valor1, valor2, valor3);
+        saidaDados(r);
     }
-    function ordemCrescente(n1, n2, n3) {
-        
+    function calcCrescente(v1, v2, v3) {
+        let temp = 0;
+        if(v1 > v2) {
+            temp = v1;
+            v1 = v2;
+            v2 = temp;
+        }
+        if(v1 > v3) {
+            temp = v1;
+            v1 = v3;
+            v3 = temp;
+        }
+        if(v2 > v3) {
+            temp = v2;
+            v2 = v3;
+            v3 = temp;
+        }
+        return v1 + " " + v2 + " " + v3;
     }
+
+    function saidaDados(x) {
+        document.getElementById("resposta").innerHTML = x;
+    }
+
 </script>
 </html>

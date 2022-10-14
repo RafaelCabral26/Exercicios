@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h4>13) Escreva um programa para ler um número inteiro (considere que serão lidos apenas valores 
+            positivos e inteiros) e escrever se é par ou ímpar.
+            </h4>
+            <label for="inteiro">Escreve numero abaixo para saber se é par ou impar.</label>
+            <input type="number" min="0" step="1" id="numero">
+            <button onclick="controllerParImpar()">Par Ou Impar?</button>
+            <div id="resposta"></div>
+    </section>
+</body>
+<script>
+    function controllerParImpar() {
+        let numero = parseInt(document.getElementById("numero").value);
+        let r = checkParImpar(numero);
+        saidaDados(r);
+    }
+    function checkParImpar(num) {
+        if(num % 2 == 0) {
+            return "Esse Número é Par."
+        }else {
+            return "Esse Número é Impar."
+        }
+    }
+    function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+</script>
+</html>
