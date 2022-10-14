@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>   
+        <label for="">Insira o Num abaixo:</label>
+        <input type="number" value="0" id="num1">
+        <button onclick="controllerNums()">Calcula</button>
+
+        <div id="resposta"></div>
+    </section>
+</body>
+<script>
+    function controllerNums() {
+        let num = document.getElementById("num1").value;
+        let r = verifNum(num);
+        saidaDados(r);
+    }
+    function verifNum(n) {
+        if(n > 0) {
+            return "Positivo.";
+        }else if(n < 0) {
+            return "Negativo";
+        }else {
+            return "Zero";
+        }
+    }
+    function saidaDados(x) {
+        document.getElementById("resposta").innerHTML = x
+    }
+</script>
+</html>
