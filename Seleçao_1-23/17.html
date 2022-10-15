@@ -31,12 +31,17 @@
 </body>
 <script>
      
-     
-        var n1 = parseFloat(document.getElementById("num1").value;
-        var n2 = parseFloat(document.getElementById("num2").value;
+        
+        var num1 = document.getElementById("num1").addEventListener("change", function(){
+            num1 = parseFloat(this.value);
+        });
+        var num2 = document.getElementById("num2").addEventListener("change", function(){
+            num2 = parseFloat(this.value);
+        });
+        
 
-     function controllerAdd(n1 = 0, n2 = 0) {
-        let r = n1 + n2;
+     function controllerAdd(num1, num2) {
+        var r = num1 + num2;
         saidaDados(r);
      }
      
