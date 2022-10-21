@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h4>“53) Fazer um algoritmo em pseudocódigo para ler quatro valores referentes a quatro notas escolares de um aluno e imprimir uma mensagem dizendo que o aluno foi aprovado, se o valor da média escolar for maior ou igual a 5. Se o aluno não foi aprovado, indique uma mensagem informando esta condição. Apresentar junto com uma das mensagens o valor da média do aluno para qualquer condição.</h4>
+        <label for="">Inserir Notas Abaixo</label>
+        <label for="nota1"></label>
+        <input type="number" value="0" id="nota1" min="1" max="10">
+
+        <label for="nota2"></label>
+        <input type="number" value="0" id="nota2" min="1" max="10">
+
+        <label for="nota3"></label>
+        <input type="number" value="0" id="nota3" min="1" max="10">
+
+        <label for="nota4"></label>
+        <input type="number" value="0" id="nota4" min="1" max="10">
+
+        <button id="btn">Checar Média</button>
+
+        <div id="resposta"></div>
+    </section>
+</body>
+<script>
+    document.getElementById("btn").addEventListener("click", function(){controllerNota()});
+    function controllerNota() {
+        let nota1 = parseFloat(document.getElementById("nota1").value);
+        let nota2 = parseFloat(document.getElementById("nota2").value);
+        let nota3 = parseFloat(document.getElementById("nota3").value);
+        let nota4 = parseFloat(document.getElementById("nota4").value);
+        let m = calcMedia(nota1, nota2, nota3, nota4);
+        let r = calcAprovacao(m);
+        saidaDados(r);
+    }
+    function calcMedia(n1, n2 , n3, n4) {
+       
+    return (n1 + n2 + n3 +n4)/4
+
+    }
+    function calcAprovacao(m) {
+        if(m >= 5) {
+            return "Aprovado, sua média é: " + m;
+        }else {
+            return "Reprovado, sue média é:" + m;
+        }
+    }
+    function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+</script>
+</html>

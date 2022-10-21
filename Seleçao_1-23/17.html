@@ -44,24 +44,36 @@
         let nums = pegarNums();
         let r = nums[0] + nums[1];
         saidaDados(r);
+        montarObjeto(nums[0], nums[1], r);
      }
      function controllerSub() {
         let nums = pegarNums();
         let r = nums[0] - nums[1];
         saidaDados(r);
+        montarObjeto(nums[0], nums[1], r);
      }
      function controllerDiv() {
         let nums = pegarNums();
         let r = nums[0] / nums[1];
         saidaDados(r);
+        montarObjeto(nums[0], nums[1], r);
      }
      function controllerMulti() {
         let nums = pegarNums();
         let r = nums[0] * nums[1];
         saidaDados(r);
+        montarObjeto(nums[0], nums[1], r);
      }
      function saidaDados(r) {
         document.getElementById("resposta").innerHTML = r;
+    }
+    function montarObjeto(numero1, numero2, r) {
+        let obj = {
+            valor1: numero1,
+            valor2:numero2,
+            resultado:r
+        }
+        return obj
     }
 </script>
 </html>
