@@ -20,6 +20,8 @@
         executadas (codificada da seguinte forma: 1. Adição, 2.Subtração, 3.Divisão, 4.Multiplicação). Calcular e escrever o resultado dessa operação sobre os dois valores lidos. Observação: Considere que só serão lidos os valores 1, 2, 3 ou 4. 
         </h4>
         <label for="">Calculadora</label>
+        <label for="nome">Nome do Aluno:</label>
+        <input type="text" id="nome">
         <input type="number" value="0" id="num1">
         <input type="number" value="0" id="num2">
         <button type="button" onclick="controllerAdd()">Adicionar</button>
@@ -31,6 +33,11 @@
 </body>
 <script>
      
+     function pegarNome() {
+         let name = document.getElementById("nome").innerText;
+         return name
+        }
+
         function pegarNums() {
             
             let num1 = parseFloat(document.getElementById("num1").value);
@@ -42,38 +49,50 @@
 
      function controllerAdd() {
         let nums = pegarNums();
+        let nome = pegarNome();
         let r = nums[0] + nums[1];
         saidaDados(r);
-        montarObjeto(nums[0], nums[1], r);
+        montarObjeto(nome, nums[0], nums[1], r);
      }
      function controllerSub() {
         let nums = pegarNums();
+        let nome = pegarNome();
         let r = nums[0] - nums[1];
         saidaDados(r);
-        montarObjeto(nums[0], nums[1], r);
+        montarObjeto(nome,nums[0], nums[1], r);
      }
      function controllerDiv() {
         let nums = pegarNums();
+        let nome = pegarNome();
         let r = nums[0] / nums[1];
         saidaDados(r);
-        montarObjeto(nums[0], nums[1], r);
+        montarObjeto(nome,nums[0], nums[1], r);
      }
      function controllerMulti() {
         let nums = pegarNums();
+        let nome = pegarNome();
         let r = nums[0] * nums[1];
         saidaDados(r);
-        montarObjeto(nums[0], nums[1], r);
+        montarObjeto(nome,nums[0], nums[1], r);
      }
      function saidaDados(r) {
         document.getElementById("resposta").innerHTML = r;
     }
-    function montarObjeto(numero1, numero2, r) {
+    function montarObjeto(nome,numero1, numero2, r) {
         let obj = {
+            nomeAluno: nome,
             valor1: numero1,
             valor2:numero2,
             resultado:r
         }
         return obj
+    }
+    function armazenamentoLocal(obj) {
+        localStorage.getItem(JSON.parse(obj));
+        if(!obj) {
+            obj = [];
+        }
+        localStorage.setItem(JSON.stringify(obj))
     }
 </script>
 </html>
