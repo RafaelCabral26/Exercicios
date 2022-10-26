@@ -35,12 +35,14 @@
         <input type="number" value="0" id="nota4" min="1" max="10">
 
         <button id="btn">Checar Média</button>
-
+        <button id="limparTabela" onclick="limparTabela()">Limpar</button>
         <div id="resposta"></div>
+        <div id="tabela"></div>
     </section>
 </body>
 <script>
     document.getElementById("btn").addEventListener("click", function(){controllerNota()});
+    
     function controllerNota() {
         let nome= document.getElementById("nome").value;
         let nota1 = parseFloat(document.getElementById("nota1").value);
@@ -50,7 +52,9 @@
         let m = calcMedia(nota1, nota2, nota3, nota4);
         let r = calcAprovacao(m);
         let obj = montarObjeto(nome, nota1, nota2,nota3, nota4, m);
-        armazenamentoLocal(obj)
+        armazenamentoLocal(obj);
+        let dadosTabela = dadosParaTabela()
+        printTabela(dadosTabela);
         saidaDados(r);
     }
     function calcMedia(n1, n2 , n3, n4) {
@@ -89,6 +93,48 @@
         dados.push(obj);
         
         localStorage.setItem("dados", JSON.stringify(dados));
+    }
+    function dadosParaTabela() {
+        let dadosTabela = JSON.parse(localStorage.getItem("dados"));
+        if(!dadosTabela) {
+            dadosTabela = [];
+        }
+        return dadosTabela
+    }
+    function printTabela(dadosTabela) {
+        let tabela = "<table>"
+            
+        tabela += "<tr>";
+        tabela += "<th>Nome</th>";
+        tabela += "<th>Nota 1</th>";
+        tabela += "<th>Nota 2</th>";
+        tabela += "<th>Nota 3</th>";
+        tabela += "<th>Nota 4</th>";
+        tabela += "<th>Média</th>";
+        tabela += "</tr>";
+     
+        for(let i = 0;i < dadosTabela.length; i++) {
+      
+        tabela += "<tr>";
+        tabela += "<td>" + dadosTabela[i].nomeAluno + "</td>";
+        tabela += "<td>" + dadosTabela[i].valor1 + "</td>";
+        tabela += "<td>" + dadosTabela[i].valor2 + "</td>";
+        tabela += "<td>" + dadosTabela[i].valor3 + "</td>";
+        tabela += "<td>" + dadosTabela[i].valor4 + "</td>";
+        tabela += "<td>" + dadosTabela[i].media + "</td>";
+        tabela += "</tr>";
+        }
+        tabela += "</table>";
+        return document.getElementById("tabela").innerHTML = tabela;
+    }
+    function limparTabela() {
+        document.getElementById("nome").value = "";
+        document.getElementById("nota1").value = "";
+        document.getElementById("nota2").value = "";
+        document.getElementById("nota3").value = "";
+        document.getElementById("nota4").value = "";
+        document.getElementById("tabela").innerHTML = ""
+        localStorage.clear();
     }
 </script>
 </html>

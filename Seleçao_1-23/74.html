@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <h4></h4>
+        <div id=resposta></div>
+    </section>
+</body>
+<script>
+   function multiplo10()   {
+       let r = "";
+       for(let i = 1; i<=100; i++) {
+        if (i % 10 == 0) {
+            r += i + ","
+        }
+    }
+    return r 
+
+   }
+   let r = multiplo10()
+     
+     
+     function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+    saidaDados(r);
+</script>
+</html>

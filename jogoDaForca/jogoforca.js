@@ -1,17 +1,18 @@
 
     var p = sorteioPalavras(); 
     criarLinhas(p);
-    document.getElementById("btn").addEventListener("click", function(){controllerForca(p,acertos, erros)});
     
     var arrContador = [];
     var erros = 6;
     var acertos = 0;
     
-    function controllerForca(p) {
+    //document.getElementById("btn").addEventListener("click", function(){controllerForca(p,acertos, erros)});
+    
+    function controllerForca(p, arrContador) {
         let letra = document.getElementById("letra").value;
-        contadorErrosAcertos(p,letra, acertos, erros, arrContador)
-        checarVitoriaDerrota(acertos,erros);
-        contadorLetra(p,letra,arrContador);
+        let contLetra = contadorLetra(letra,arrContador);
+        contadorErrosAcertos(p,contLetra,acertos,erros,arrContador);
+       
     }
 
 function sorteioPalavras() {
@@ -26,16 +27,35 @@ function criarLinhas(p) {
         document.getElementById("palavra").innerHTML += "<div class='letras'> __ </div>";
     };
 };
+
+
+//Inserir letra no array para evitar repetições
+function contadorLetra(letra, arrContador = []) {
+        if(arrContador.indexOf(letra) == -1) {
+            arrContador.push(letra);
+    }else {
+        alert("Letra Repetida");
+        return letra = ""
+    }
+    
+};
 //Contar Num de Erros e Acertos
 function contadorErrosAcertos(pa,letra, acertos, erros, arrContador) {
+    let trueOuFalse = false;
     for(let i = 0;i < pa.length; i++) {
-        if(letra == pa[i] && arrContador.indexOf(letra) == -1) {
+        if(letra == pa[i]) {
             acertos++
+            trueOuFalse = true 
+            
         }
     }
-    for(let j = 0;j <p.length;j++)
-        if(letra != pa[i]) {
-        erros--
+    for(let j = 0;j <pa.length;j++) {
+
+        if(letra != pa[j] && !trueOuFalse) {
+           erros--
+           return erros 
+        }
+        
     }
 }
 //Checar Vitória 
@@ -53,15 +73,6 @@ function checarVitoriaDerrota(acertos, erros) {
 //Checar Letra 
 
 
-
-function contadorLetra(pa, letra, arrContador) {
-    for(let i = 0; i < pa.length; i++) {
-        if(letra == pa[i] && arrContador.indexOf(letra) == -1) {
-            arrContador.push(letra);
-                
-        };
-    };  
-};
         
         
     
