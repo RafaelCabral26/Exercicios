@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <h4></h4>
+        <label for="idades">Insira as Idades abaixo</label>
+        <input type="number" value="" id="idades">
+        <button onclick="controllerMedia()">Calcular Media das Idades</button>
+        <div id=resposta></div>
+
+    </section>
+</body>
+<script>
+     function controllerMedia() {
+        let idades = document.getElementById("idades").value;
+        let arrIdades = converterIdades(idades);
+        let media = calcMedia(arrIdades);
+        saidaDados(media);
+
+     }
+     function converterIdades(idades) {
+        let arrIdades = idades.split(' ');
+        return arrIdades
+     }
+     function calcMedia(arrIdades) {
+        let media = 0;
+        for(let i = 0;i < arrIdades.length;i++) {
+            media += arrIdades[i]
+        }
+        media = media/(arrIdades.length);
+        return media
+     }
+     
+     
+     function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+</script>
+</html>
