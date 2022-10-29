@@ -11,8 +11,9 @@
         let letra = document.getElementById("letra").value;
         let contLetra = contadorLetra(letra,arrContador);
         contadorAcertosErros(p,contLetra,arrAcertosErros);
+        inserirLetra(p, letra)
+        checarVitoriaDerrota(p,arrAcertosErros)
 
-       
     }
 
 function sorteioPalavras() {
@@ -30,6 +31,7 @@ function criarLinhas(p) {
 
 
 //Inserir letra no array para evitar repetições
+
 function contadorLetra(letra, arrContador = []) {
         if(arrContador.indexOf(letra) == -1) {
             arrContador.push(letra);
@@ -41,6 +43,7 @@ function contadorLetra(letra, arrContador = []) {
   return arrContador[arrContador.length - 1]  ;
 };
 //Contar Num de Erros e Acertos
+
 function contadorAcertosErros(pa,letra, arrAcertosErros) {
     for(let i = 0;i < pa.length; i++) {
         if(letra == pa[i]) {
@@ -67,7 +70,15 @@ function checarVitoriaDerrota(p,arrAcertosErros) {
 
 //Inserir Letras
 
+function inserirLetra(p, letra) {
+    let palavraContainer = document.getElementById("palavra");
+    for(let i = 0; i <p.length;i++) {
+        if(letra == p[i]) {
+            palavraContainer.childNodes[i + 1].innerHTML = letra;
+        }
 
+    }
+}
 
         
         
