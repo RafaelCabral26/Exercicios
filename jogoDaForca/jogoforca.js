@@ -12,6 +12,7 @@
         let contLetra = contadorLetra(letra,arrContador);
         contadorAcertosErros(p,contLetra,arrAcertosErros);
         inserirLetra(p, letra)
+        letrasDigitadas(letra);
         checarVitoriaDerrota(p,arrAcertosErros)
 
     }
@@ -35,7 +36,7 @@ function criarLinhas(p) {
 function contadorLetra(letra, arrContador = []) {
         if(arrContador.indexOf(letra) == -1) {
             arrContador.push(letra);
-            
+            document.getElementById("letrasDigitadas").innerHTML += "<div class='letras_r'>" + letra + "</div>"
     }else {
         alert("Letra Repetida");
         return letra = ""
@@ -76,11 +77,14 @@ function inserirLetra(p, letra) {
         if(letra == p[i]) {
             palavraContainer.childNodes[i + 1].innerHTML = letra;
         }
-
+        
     }
 }
 
-        
+//Mostrar letras já digitadas.
+function letrasDigitadas(letras, arrContador) {
+
+}
         
     
 

@@ -3,7 +3,9 @@ body {
     flex-direction: column;
     text-align: center;
 }
-
+main {
+    margin: auto;
+}
 .palavra {
     display:flex;
     justify-content: center;    
@@ -18,4 +20,10 @@ body {
 input[type="text"] {
     padding-left: 5px;
 }
+ #forca {
+    width: 400px;
+    height: 400px;
+    background-color: aqua;
+    opacity: 0.2 ;
+ }
  
