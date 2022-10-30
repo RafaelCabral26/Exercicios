@@ -31,7 +31,7 @@ function criarLinhas(p) {
 };
 
 
-//Inserir letra no array para evitar repetições
+//Inserir letra no array para evitar repetições e mostrar letras já digitadas na tela
 
 function contadorLetra(letra, arrContador = []) {
         if(arrContador.indexOf(letra) == -1) {
@@ -82,9 +82,7 @@ function inserirLetra(p, letra) {
 }
 
 //Mostrar letras já digitadas.
-function letrasDigitadas(letras, arrContador) {
 
-}
         
     
 

@@ -2,6 +2,7 @@ body {
     display:flex;
     flex-direction: column;
     text-align: center;
+    
 }
 main {
     margin: auto;
@@ -23,9 +24,8 @@ input[type="text"] {
  #forca {
     width: 400px;
     height: 400px;
-    background-color: aqua;
-    opacity: 0.2 ;
+    background-color: rgba(18, 211, 211, 0.2);
  }
 .cabeça, .tronco, .braço_esquerdo, .braço_direito, .perna_esquerda, .perna_direita  {
-    display:none;
+    display: none;
 }
