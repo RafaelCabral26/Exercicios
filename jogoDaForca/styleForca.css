@@ -26,4 +26,6 @@ input[type="text"] {
     background-color: aqua;
     opacity: 0.2 ;
  }
- 
+.cabeça, .tronco, .braço_esquerdo, .braço_direito, .perna_esquerda, .perna_direita  {
+    display:none;
+}
