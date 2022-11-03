@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup {
+            display: none;
+            flex-direction: column;
+            width: 200px;
+            height: 100px;
+            background-color: rgba(10, 159, 185, 0.9);
+            color: black;
+            position: absolute;
+            top:350px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h4>
+            12) A Federação Gaúcha de Futebol contratou você para escrever um
+            programa para fazer uma
+            estatística do resultado de vários GRENAIS. Escreva um algoritmo
+            para ler o número de gols marcados pelo Inter, o número de gols
+            marcados pelo GRÊMIO em um GRENAL, imprimindo o nome do time
+            vitorioso ou a palavra EMPATE. Logo após escrever a mensagem "Novo
+            GRENAL 1.Sim 2.Não?" e solicitar uma resposta. Se a resposta for 1,
+            o algoritmo deve ser executado novamente solicitando o número de
+            gols marcados pelos times em uma nova partida, caso contrário deve
+            ser encerrado imprimindo:
+            - Quantos GRENAIS fizeram parte da estatística.
+            - O número de vitórias do Inter.
+            - O número de vitórias do Grêmio.
+            - O número de Empates.
+            - Uma mensagem indicando qual o time que venceu o maior número de
+            GRENAIS (ou NÃO
+            HOUVE VENCEDOR).
+
+
+        </h4>
+        <label for="">Escreva o Placar do Jogo abaixo</label>
+        <label for="gremio">Gols do Grêmio:</label>
+        <input type="number" value="0" id="gremio">
+        <label for="inter">Gols do Inter:</label>
+        <input type="number" value="0" id="inter">
+        <button onclick="controllerVencedor()">Checar Vencedor</button>
+        <div id="resposta"></div>
+        <div class="popup">
+            <span>Novo Grenal?</span>
+            <button id="sim">Sim</button>
+            <button id="nao">Não</button>
+        </div>
+    </section>
+</body>
+<script>
+    class Placar {
+        constructor(gremio, inter) {
+            this.gremio = gremio;
+            this.inter = inter;
+        }
+    }
+    function controllerVencedor() {
+        let gremio = parseInt(document.getElementById("gremio").value);
+        let inter = parseInt(document.getElementById("inter").value);
+        let r = checarVencedor(gremio, inter);
+        let placar = new Placar(gremio, inter);
+        saidaDados(r);
+        addStorage(placar)
+        console.log(placar)
+    }
+    //Botoes Popup
+   
+
+
+    function checarVencedor(g, i) {
+        if (g == i) {
+            return "EMPATE!"
+        } else if (g > i) {
+            return "Grêmio Venceu!"
+        } else {
+            return "Inter Venceu!"
+        }
+    }
+    function saidaDados(r) {
+        document.getElementById("resposta").innerHTML = r;
+    }
+    function mostrarPopup() {
+        document.querySelector(".popup").style.display = "flex";
+    }
+    //Montar Tabela e Objeto
+    function addStorage(obj) {
+        let dados = JSON.parse(localStorage.getItem("dados"));
+        if(dados == null) {
+            dados = [];
+        }
+        dados.push(obj)
+        localStorage.setItem("dados", JSON.stringify(dados));
+    }
+    
+</script>
+
+</html>

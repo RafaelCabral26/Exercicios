@@ -49,17 +49,26 @@
         let nota2 = parseFloat(document.getElementById("nota2").value);
         let nota3 = parseFloat(document.getElementById("nota3").value);
         let nota4 = parseFloat(document.getElementById("nota4").value);
-        let m = calcMedia(nota1, nota2, nota3, nota4);
-        let r = calcAprovacao(m);
-        let obj = montarObjeto(nome, nota1, nota2,nota3, nota4, m);
-        armazenamentoLocal(obj);
-        let dadosTabela = dadosParaTabela()
-        printTabela(dadosTabela);
-        saidaDados(r);
+
+        
+            let m = calcMedia(nota1, nota2, nota3, nota4);
+            let r = calcAprovacao(m);
+            let obj = montarObjeto(nome, nota1, nota2,nota3, nota4, m);
+            armazenamentoLocal(obj);
+            let dadosTabela = dadosParaTabela()
+            printTabela(dadosTabela);
+            saidaDados(r);
     }
     function calcMedia(n1, n2 , n3, n4) {
-       
-    return (n1 + n2 + n3 +n4)/4
+       let arrChecarRange = [n1, n2, n3, n4];
+       let media = (n1 + n2 + n3 +n4)/4
+        for(let i=0;i < 4;i++) {
+        if(arrChecarRange[i] < 0 || arrChecarRange[i] > 10) {
+            media = ""
+            return alert("Valor " + (i+1) + " é inválido." )
+        }
+       }
+    return media
 
     }
     function calcAprovacao(m) {
@@ -85,7 +94,7 @@
         return obj
     }
     function armazenamentoLocal(obj) {
-       let dados = JSON.parse(localStorage.getItem("dados"))
+       let dados = JSON.parse(localStorage.getItem("dados"));
         if(dados == null) {
              dados = [];
         } 
